@@ -10,5 +10,13 @@ class TestCategory(unittest.TestCase):
             "Category.__init__() missing 1 required positional argument: 'name'",
         )
 
+    def test_name_must_have_less_than_256_characters(self):
+        with self.assertRaises(ValueError) as ctx:
+            Category(name="a" * 256)
+        self.assertEqual(
+            str(ctx.exception),
+            "Name must be less than 256 characters",
+        )
+
 if __name__ == "__main__":
     unittest.main()

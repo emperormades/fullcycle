@@ -13,6 +13,9 @@ class Category:
         self.description = description
         self.is_active = is_active
 
+        if len(self.name) > 255:
+            raise ValueError("Name must be less than 256 characters")
+
     def __str__(self) -> str:
         return f"Category(id={self.id}, name={self.name}, description={self.description}, is_active={self.is_active})"
 
