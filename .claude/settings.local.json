@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(java *)",
+      "PowerShell(Test-Path *)",
+      "PowerShell(winget install *)",
+      "PowerShell($rel = Invoke-RestMethod -Uri \"https://api.github.com/repos/plantuml/plantuml/releases/latest\" -UseBasicParsing; $rel.assets | Select-Object name, size, browser_download_url | Format-Table -AutoSize)",
+      "PowerShell(Get-Command *)"
+    ]
+  }
+}
