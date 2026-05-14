@@ -1,5 +1,5 @@
 import unittest
-from uuid import UUID
+from uuid import UUID, uuid4
 from category import Category
 
 class TestCategory(unittest.TestCase):
@@ -33,6 +33,22 @@ class TestCategory(unittest.TestCase):
         category = Category(name="Filme")
         self.assertEqual(category.name, "Filme")
         self.assertEqual(category.is_active, True)
+
+    def test_Category_str_representation(self):
+        id = uuid4()
+        category = Category(id=id, name="Filme")
+        self.assertEqual(
+            str(category),
+            f"Category(id={id}, name=Filme, description=, is_active=True)"
+        )
+
+    def test_Category_repr_representation(self):
+        id = uuid4()
+        category = Category(id=id, name="Filme")
+        self.assertEqual(
+            repr(category),
+            f"Category(id={id}, name=Filme, description=, is_active=True)"
+        )
 
 if __name__ == "__main__":
     unittest.main()
