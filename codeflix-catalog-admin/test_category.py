@@ -1,5 +1,5 @@
 import unittest
-import uuid
+from uuid import UUID
 from category import Category
 
 class TestCategory(unittest.TestCase):
@@ -21,7 +21,13 @@ class TestCategory(unittest.TestCase):
 
     def test_category_must_be_created_with_id_as_uuid(self):
         category = Category(name="test")
-        self.assertIsInstance(category.id, uuid.UUID)
+        self.assertIsInstance(category.id, UUID)
+
+    def test_created_category_with_default_values(self):
+        category = Category(name="test")
+        self.assertEquals(category.name, "test")
+        self.assertEquals(category.description, "")
+        self.assertEquals(category.is_active, True)
 
 if __name__ == "__main__":
     unittest.main()
