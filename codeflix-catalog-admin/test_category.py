@@ -1,4 +1,5 @@
 import unittest
+import uuid
 from category import Category
 
 class TestCategory(unittest.TestCase):
@@ -17,6 +18,10 @@ class TestCategory(unittest.TestCase):
             str(ctx.exception),
             "Name must be less than 256 characters",
         )
+
+    def test_category_must_be_created_with_id_as_uuid(self):
+        category = Category(name="test")
+        self.assertIsInstance(category.id, uuid.UUID)
 
 if __name__ == "__main__":
     unittest.main()
